@@ -29,22 +29,7 @@ task execution using UART serial output.
 ---
 
 
-## Project Structureproject/
-├── Core/
-│   ├── Inc/
-│   │   └── main.h
-│   └── Src/
-│       └── main.c          ← All application code here
-├── Thirdparty/
-│   └── FreeRTOS/
-│       ├── include/        ← FreeRTOS headers
-│       ├── portable/       ← ARM Cortex-M4 port
-│       └── *.c             ← FreeRTOS source files
-├── Drivers/
-│   ├── STM32F4xx_HAL_Driver/
-│   └── CMSIS/
-└── README.md
-## Project Structure
+
 
 
 
@@ -218,20 +203,7 @@ Task-1 (priority 3) and Task-2 (priority 2) always
 grab the semaphore before Task-3 gets a chance.
 This demonstrates **task starvation**.
 
----
 
-## UART Configuration
-
-| Parameter    | Value        |
-|--------------|-------------|
-| Port         | USART2       |
-| TX Pin       | PA2          |
-| RX Pin       | PA3          |
-| Baud Rate    | 115200       |
-| Data Bits    | 8            |
-| Stop Bits    | 1            |
-| Parity       | None         |
-| Flow Control | None         |
 
 ---
 
@@ -368,18 +340,7 @@ vTaskStartScheduler()             /* start FreeRTOS scheduler   */
 
 ---
 
-## Common Problems and Fixes
 
-| Problem                  | Cause                        | Fix                              |
-|--------------------------|------------------------------|----------------------------------|
-| No output in terminal    | Wrong baud rate              | Set exactly 115200               |
-| Garbled text             | Flow control enabled         | Set flow control to None         |
-| Permission denied        | No access to serial port     | sudo usermod -a -G dialout $USER |
-| Task-3 never prints      | Expected — priority too low  | Change priority to 3 to test     |
-| Build error              | Missing function definition  | Check forward declarations       |
-| Board not detected       | Driver issue                 | Reinstall ST-Link driver         |
-
----
 
 ## Modifying the Code
 
@@ -455,6 +416,3 @@ IDE     : STM32CubeIDE
 RTOS    : FreeRTOS
 ```
 
----
-
-*Built with STM32 + FreeRTOS for learning embedded systems*
